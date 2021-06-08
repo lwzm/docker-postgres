@@ -1,13 +1,7 @@
-FROM lwzm/python
+FROM postgres:13
 
 LABEL maintainer="lwzm@qq.com"
 
-RUN apk add --no-cache su-exec postgresql postgresql-plpython3
-
-COPY entrypoint /bin/
-
-VOLUME /var/lib/postgresql/data/
-EXPOSE 5432
-
-ENTRYPOINT [ "entrypoint" ]
-CMD [ "postgres" ]
+RUN apt update && \
+    apt install -y postgresql-plpython3-13 \
+    && rm -rf /var/lib/apt/lists/*
