@@ -1,7 +1,7 @@
-FROM postgres:13
+FROM postgres:14
 
 LABEL maintainer="lwzm@qq.com"
 
 RUN apt update && \
-    apt install -y postgresql-plpython3-13 \
+    apt install -y --no-install-recommends postgresql-plpython3-14 \
     && rm -rf /var/lib/apt/lists/*
