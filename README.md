@@ -24,16 +24,13 @@ return b
 $$ LANGUAGE plpython3u;
 
 
-create or replace function t() returns trigger language plpython3u as $$
+do language plpython3u $$
 import time
-import requests
 import os
 time.sleep(1)
 with open("/tmp/debug", "a") as f:
     print(dir(), file=f)
     print(globals(), file=f)
-    print(TD, file=f)
-    print(requests, file=f)
     print(os.getcwd(), file=f)
 $$;
 ```
